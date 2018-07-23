@@ -53,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
             new_instance = classes[args[0]]()
             for arg in args[1:]:
                 key = arg.split("=")[0]
-                val = arg.split("=")[1].replace('_', ' ')
+                val = arg.split("=")[1]
                 try:
                     int(val)
                 except:
@@ -62,6 +62,8 @@ class HBNBCommand(cmd.Cmd):
                     float(val)
                 except:
                     pass
+                if type(val) == str:
+                    val.replace('_', ' ')
                 setattr(new_instance, key, val)
             new_instance.save()
             print(new_instance.id)
