@@ -122,7 +122,7 @@ class test_console(unittest.TestCase):
         self.assertEqual("** no instance found **\n", x)
 
     @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db', "won't work in db")
-    def test_create(self):
+    def test_create_fileStorage(self):
         '''
             Test that create works
         '''
