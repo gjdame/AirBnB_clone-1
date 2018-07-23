@@ -34,12 +34,12 @@ class BaseModel:
         else:
             if kwargs.get('created_at'):
                 kwargs["created_at"] = datetime.strptime(kwargs["created_at"],
-                                                     "%Y-%m-%dT%H:%M:%S.%f")
+                                                         "%Y-%m-%dT%H:%M:%S.%f")
             else:
                 self.created_at = datetime.now()
             if kwargs.get('updated_at'):
                 kwargs["updated_at"] = datetime.strptime(kwargs["updated_at"],
-                                                        "%Y-%m-%dT%H:%M:%S.%f")
+                                                         "%Y-%m-%dT%H:%M:%S.%f")
             else:
                 self.updated_at = datetime.now()
             if not self.id:
@@ -48,8 +48,6 @@ class BaseModel:
             for key, val in kwargs.items():
                 if "__class__" not in key:
                     setattr(self, key, val)
-
-
 
     def __str__(self):
         '''
@@ -84,7 +82,6 @@ class BaseModel:
         cp_dct.pop('_sa_instance_state', None)
 
         return (cp_dct)
-
 
     def delete(self):
         """

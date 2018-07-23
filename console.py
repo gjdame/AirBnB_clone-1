@@ -20,6 +20,7 @@ from models.review import Review
 classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
 
+
 class HBNBCommand(cmd.Cmd):
     '''
         Contains the entry point of the command interpreter.
@@ -67,7 +68,6 @@ class HBNBCommand(cmd.Cmd):
             print(new_instance.id)
         else:
             print("** class doesn't exist **")
-
 
     def do_show(self, args):
         '''
