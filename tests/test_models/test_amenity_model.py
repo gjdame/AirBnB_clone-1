@@ -45,6 +45,7 @@ class TestAmenity(unittest.TestCase):
     def test_attributes_are_strings(self):
         self.assertEqual(type(self.amenity1.name), str)
 
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db', "won't work in db")
     def test_save(self):
         self.amenity1.save()
         self.assertNotEqual(self.amenity1.created_at, self.amenity1.updated_at)

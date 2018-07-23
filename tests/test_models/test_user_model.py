@@ -54,6 +54,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(type(self.my_user.first_name), str)
         self.assertEqual(type(self.my_user.first_name), str)
 
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db', "testing skip")
     def test_save(self):
         self.my_user.save()
         self.assertNotEqual(self.my_user.created_at, self.my_user.updated_at)
