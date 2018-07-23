@@ -5,6 +5,7 @@
 import sys
 import models
 import unittest
+import pep8
 from io import StringIO
 from console import HBNBCommand
 from unittest.mock import create_autospec
@@ -12,6 +13,16 @@ from unittest.mock import create_autospec
 
 class test_console(unittest.TestCase):
     ''' Test the console module'''
+
+    """Check for Pep8 style conformance"""
+    def test_pep8_console(self):
+        """Pep8 console.py"""
+        style = pep8.StyleGuide(quiet=False)
+        errors = 0
+        file = (["console.py"])
+        errors += style.check_files(file).total_errors
+        self.assertEqual(errors, 0, 'Need to fix Pep8')
+
     def setUp(self):
         '''setup for'''
         self.backup = sys.stdout
