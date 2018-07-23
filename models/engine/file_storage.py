@@ -58,10 +58,11 @@ class FileStorage:
         '''
             Deletes an object from __objects if exists.
         '''
-        for i in FileStorage.__objects.copy():
+        FileStorage.__objects = {k : v for k, v in FileStorage.__objects.items()
+            if v != obj}
+'''        for i in FileStorage.__objects.copy():
             obj_id = i.split('.')
             obj_id = obj_id[1]
             if obj_id == obj.id:
                 del FileStorage.__objects[i]
-                self.save()
-        return
+                self.save() '''
