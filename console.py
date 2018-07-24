@@ -129,11 +129,7 @@ class HBNBCommand(cmd.Cmd):
             based or not on the class name.
         '''
         obj_list = []
-        if os.getenv('HBNB_TYPE_STORAGE') == 'db':
-            storage = DBStorage()
-        else:
-            storage = FileStorage()
-        storage.reload()
+        models.storage.reload()
         objects = models.storage.all()
         try:
             if len(args) != 0:
