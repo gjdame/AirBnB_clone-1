@@ -12,9 +12,9 @@ import os
 from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.orm import sessionmaker
 
+
 @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db',
                  "only testing db storage")
-
 class test_DBStorage(unittest.TestCase):
 
     def testState(self):
