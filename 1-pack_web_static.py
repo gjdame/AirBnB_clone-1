@@ -6,10 +6,12 @@ import os
 
 env.hosts = ['localhost']
 
+
 def do_pack():
     n = datetime.now()
-    name = "web_static_{}{}{}{}{}{}.tgz".format(n.year, n.month\
-, n.day, n.hour, n.minute, n.second)
+    name = "web_static_{}{}{}{}{}{}.tgz".format(n.year, n.month,
+                                                n.day, n.hour,
+                                                n.minute, n.second)
     local('mkdir -p versions')
     local("tar -cvzf versions/{} web_static".format(name))
     size = os.stat("versions/{}".format(name)).st_size
