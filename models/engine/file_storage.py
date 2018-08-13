@@ -60,3 +60,9 @@ class FileStorage:
         '''
         FileStorage.__objects = {k: v for k, v in FileStorage.__objects.items()
                                  if v != obj}
+
+    def close(self):
+        '''
+            call reload function for deserialization purposes
+        '''
+        self.reload()
