@@ -33,8 +33,8 @@ def display_hbnb():
     return render_template('100-hbnb.html',
                            storage=storage.all('State'),
                            amenity=storage.all('Amenity'),
-                           place=storage.all('Place'))
-
+                           place=storage.all('Place'),
+                           user=storage.all('User'))
 @app.teardown_appcontext
 def close(exception):
     storage.close()

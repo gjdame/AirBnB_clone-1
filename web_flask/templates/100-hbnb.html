@@ -85,7 +85,11 @@
                         </div>
                     </div>
                     <div class="user">
-                        <b>Owner:</b>{{ place.user_id }}
+		      {% for user in user.values()|sort(attribute="first_name") %}
+		       {% if user.id == place.user_id %}
+                        <b>Owner:</b>{{ user.first_name }} {{user.last_name}}
+		       {% endif %}
+		      {% endfor %}
                     </div>
                     <div class="description">
 		      {{ place.description }}
