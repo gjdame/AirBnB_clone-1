@@ -8,6 +8,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
 
+
 class State(BaseModel, Base):
     '''
         Implementation for the State.
@@ -15,8 +16,7 @@ class State(BaseModel, Base):
     __tablename__ = 'states'
     name = Column(String(128), nullable=False)
     cities = relationship('City', cascade='all, delete-orphan',
-                        backref='state')
-
+                          backref='state')
 
     if os.getenv('HBNB_TYPE_STORAGE') == 'fs':
         @property
