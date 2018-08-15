@@ -3,10 +3,10 @@
     Implementation of the State class
 '''
 import os
+import models
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from models.base_model import BaseModel, Base
-
 
 class State(BaseModel, Base):
     '''
@@ -14,15 +14,19 @@ class State(BaseModel, Base):
     '''
     __tablename__ = 'states'
     name = Column(String(128), nullable=False)
-    city = relationship('City', cascade='all, delete-orphan',
+    cities = relationship('City', cascade='all, delete-orphan',
                         backref='state')
 
-    if os.getenv('HBNB_MYSQL_DB') == 'FileStorage':
+
+    if os.getenv('HBNB_TYPE_STORAGE') == 'fs':
         @property
         def cities(self):
             """
             Returns list of City instances with specific state id
             """
-            city_inst = models.storage.all('City').values()
-            all_cities = [inst for inst in city_inst if inst.state_id == self.id]
-            return all_cities
+            res = []
+            city_inst = models.storage.all(models.classes['City']).values()
+            for k in city_inst:
+                if k.state_id == self.id:
+                    res.append(k)
+            return res
