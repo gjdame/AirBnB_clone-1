@@ -5,6 +5,8 @@ from models import storage
 
 app = Flask(__name__)
 app.url_map.strict_slashes=False
+app.jinja_env.trim_blocks = True
+app.jinja_env.lstrip_blocks = True
 
 @app.route('/states_list')
 def display_states():
